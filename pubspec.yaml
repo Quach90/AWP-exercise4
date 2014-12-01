@@ -4,6 +4,8 @@ description: A sample command-line application
 dependencies:
   http_server: any
 
+  http: any
+
 dev_dependencies:
 #  unittest: any
 
