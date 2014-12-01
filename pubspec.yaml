@@ -1,0 +1,9 @@
+name: AWP-exercise4
+version: 0.0.1
+description: A sample command-line application
+dependencies:
+  http_server: any
+
+dev_dependencies:
+#  unittest: any
+
