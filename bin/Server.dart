@@ -1,6 +1,7 @@
 library simple_http_server;
 
 import 'dart:io';
+import 'dart:convert';
 //import 'package:http_server/http_server.dart' show VirtualDirectory;
 
 void main() {
@@ -10,9 +11,11 @@ void main() {
     //..allowDirectoryListing = true;
 
   final dir = new Directory(MY_HTTP_ROOT_PATH);
-  String test = "";
+  var superMap = new List();
   void addToTest(element){
-    test += element.path;
+    var test = new Map();
+      test["path:"] = element.path;
+    superMap.add(test);
   }
 
 
@@ -20,11 +23,12 @@ void main() {
 
 
 
-  HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080).then((server) {
+  HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8085).then((server) {
     server.listen((HttpRequest request) {
 
-      request.response..headers.contentType = new ContentType("text", "plain", charset: "utf-8")
-        ..write(test)
+      request.response..headers.contentType = new ContentType("application/json", "plain", charset: "utf-8")
+        ..headers.add("Access-Control-Allow-Origin", "*, ")
+        ..write(JSON.encode(superMap))
         ..close();
 
       //virDir.serveRequest(request);

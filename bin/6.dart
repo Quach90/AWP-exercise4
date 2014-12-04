@@ -1,12 +1,10 @@
-//import 'dart:html';
-import 'package:http/http.dart' as http;
+import 'dart:html';
 
 void main() {
 
   //querySelector('#RipVanWinkle').text = 'Wake up, sleepy head!';
-  var url = 'http://127.0.0.1:8080';
-  http.get(url).then((response) {
-    print("Response status: ${response.statusCode}");
-    print("Response body: ${response.body}");
-  });
+  var url = 'http://127.0.0.1:8085';
+  var response = [];
+  HttpRequest.getString(url).then(
+          (result) => response =  print('Request complete: $result'));
 }
